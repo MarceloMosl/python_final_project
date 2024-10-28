@@ -48,15 +48,18 @@ To set up the project, follow one of the methods below:
 
     personal-finance-tracker/
     │
-    ├── main.py                 # Main script to run the app
-    ├── data_management.py      # Manages transactions (loading, adding, editing, deleting)
-    ├── budget_management.py    # Manages income, budget settings, and alerts
-    ├── data_analysis.py        # Analyzes spending and identifies trends
-    ├── visualization.py        # Generates line, bar, and pie charts
+    ├── src/                    # Source code directory
+    │   ├── main.py                 # Main script to run the app
+    │   ├── data_management.py      # Manages transactions (loading, adding, editing, deleting)
+    │   ├── budget_management.py    # Manages income, budget settings, and alerts
+    │   ├── data_analysis.py        # Analyzes spending and identifies trends
+    │   ├── visualization.py        # Generates line, bar, and pie charts
+    │
     ├── requirements.txt        # List of dependencies
     ├── sampledata.csv          # Sample data for initial testing
     ├── .gitignore              # Excludes unnecessary files/folders (e.g., venv/)
     └── README.md               # Project documentation
+
 
 ### Contributing
 **To contribute to this project**:
