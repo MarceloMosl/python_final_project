@@ -43,7 +43,7 @@ To set up the project, follow one of the methods below:
   python main.py
 ```
 
-### Project Structure
+## Project Structure
 **How its set up**:
 
     personal-finance-tracker/
@@ -61,7 +61,7 @@ To set up the project, follow one of the methods below:
     └── README.md               # Project documentation
 
 
-### Contributing
+## Contributing
 **To contribute to this project**:
   1. Fork the repository:
 
@@ -71,7 +71,7 @@ To set up the project, follow one of the methods below:
 
 
 
-### License
+## License
 
 **No License**:
   Go crazy do whatever you want. :D
