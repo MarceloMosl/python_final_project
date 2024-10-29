@@ -1,8 +1,14 @@
-from src.functions.switcher import switch
+from functions.switcher import switch
+from functions.csv_functions.import_csv import import_csv_file
+import pandas as pd
+
+df = pd.DataFrame()
 
 
 def main():
     programShouldRun = True
+
+    global df
 
     while programShouldRun:
         print("\n\nPersonal Finance Tracker App")
@@ -22,6 +28,11 @@ def main():
         # get user input
         userInput = input("Enter your choice: ")
 
+        if userInput == "0":
+            # Setting the dataframe
+            df = import_csv_file()
+            continue
+
         # check if the user wants to exit
         if userInput == "11":
             programShouldRun = False
@@ -29,7 +40,7 @@ def main():
             break
 
         # call the switch function to handle the menu option
-        switch(userInput)
+        switch(userInput, df)
 
 
 if __name__ == "__main__":
