@@ -4,9 +4,8 @@ from functions.data_vizualization.switcher import data_vizualization_switch
 from functions.spending_analysis.switcher import spending_analysis_swticher
 
 
-def switch(value):
+def switch(value, df):
     switcher = {
-        "0": lambda: csv_switch(value),  # Import a CSV file
         "1": lambda: data_management_switch(value),  # View All Transactions
         "2": lambda: data_management_switch(value),  # View Transactions by Date Range
         "3": lambda: data_management_switch(value),  # Add a Transaction
@@ -20,7 +19,7 @@ def switch(value):
         "9": lambda: data_vizualization_switch(
             value
         ),  # Visualize Monthly Spending Trend
-        "10": lambda: csv_switch(value),  # Save Transactions to CSV
+        "10": lambda: csv_switch(df),  # Save Transactions to CSV
     }
     switcher.get(
         value, lambda: print("Invalid option, please choose a valid option.")
