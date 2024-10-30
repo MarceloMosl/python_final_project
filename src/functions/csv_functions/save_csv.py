@@ -21,6 +21,10 @@ def select_folder_and_filename():
 
 
 def save_csv_file(df: pd.DataFrame):
+    if df.empty:
+        print("Please Import a CSV file before saving a new one. :D")
+        return
+
     filename = select_folder_and_filename()
     if filename == None:
         return
