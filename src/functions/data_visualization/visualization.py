@@ -2,8 +2,50 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-# Monthly Spending Trend (Line Chart)
+# Function to check if the input is a DataFrame and not empty
+def check_is_dataframe(transactions):
+    if not isinstance(transactions, pd.DataFrame):
+        print(
+            "Error: transactions is not a DataFrame. Please import the CSV file first."
+        )
+        return False
+
+    # Check if the DataFrame is empty
+    if transactions.empty:
+        print(
+            "Error: transactions DataFrame is empty. Please ensure the CSV file has data."
+        )
+        return False
+
+    # For debugging purposes, to confirm the content of the DataFrame
+    print("DataFrame is valid:")
+    print(transactions)
+    return True
+
+
+# Function to check if the DataFrame has necessary columns
+def check_required_columns(transactions, required_columns):
+    missing_columns = [
+        col for col in required_columns if col not in transactions.columns
+    ]
+    if missing_columns:
+        print(
+            f"Error: DataFrame missing required columns: {', '.join(missing_columns)}."
+        )
+        return False
+    return True
+
+
+# Visualize Spending Trend (Line Chart)
 def visualize_spending_trend(transactions):
+    # Ensure transactions is a DataFrame
+    if not check_is_dataframe(transactions):
+        return
+
+    # Ensure the necessary columns are present
+    if not check_required_columns(transactions, ["Date", "Type", "Amount"]):
+        return
+
     # Ensure the 'Date' column is in datetime format
     transactions["Date"] = pd.to_datetime(transactions["Date"])
 
@@ -32,6 +74,14 @@ def visualize_spending_trend(transactions):
 
 # Spending by Category (Bar Chart)
 def visualize_category_spending(transactions):
+    # Ensure transactions is a DataFrame
+    if not check_is_dataframe(transactions):
+        return
+
+    # Ensure the necessary columns are present
+    if not check_required_columns(transactions, ["Category", "Type", "Amount"]):
+        return
+
     # Group by Category and sum up the 'Amount' for each category (only 'Expense')
     category_spending = (
         transactions[transactions["Type"] == "Expense"]
@@ -48,8 +98,16 @@ def visualize_category_spending(transactions):
     plt.show()
 
 
-# Percentage Distribution of Spending (Pie Chart)
+# Percentage Distribution (Pie Chart)
 def visualize_percentage_distribution(transactions):
+    # Ensure transactions is a DataFrame
+    if not check_is_dataframe(transactions):
+        return
+
+    # Ensure the necessary columns are present
+    if not check_required_columns(transactions, ["Category", "Type", "Amount"]):
+        return
+
     # Group by Category and sum up the 'Amount' for each category (only 'Expense')
     category_spending = (
         transactions[transactions["Type"] == "Expense"]
