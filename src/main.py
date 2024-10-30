@@ -2,13 +2,11 @@ from functions.switcher import switch
 from functions.csv_functions.import_csv import import_csv_file
 import pandas as pd
 
-df = pd.DataFrame()
-
 
 def main():
     programShouldRun = True
 
-    global df
+    df = pd.DataFrame()
 
     while programShouldRun:
         print("\n\nPersonal Finance Tracker App")
