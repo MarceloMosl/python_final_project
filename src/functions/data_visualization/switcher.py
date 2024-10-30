@@ -1,6 +1,6 @@
-from functions.data_visualization.visualization import visualize_spending_trend
-from functions.data_visualization.visualization import visualize_category_spending
 from functions.data_visualization.visualization import (
+    visualize_spending_trend,
+    visualize_category_spending,
     visualize_percentage_distribution,
 )
 
