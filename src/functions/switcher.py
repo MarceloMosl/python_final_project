@@ -16,9 +16,7 @@ def switch(value, df):
             value
         ),  # Calculate Average Monthly Spending
         "8": lambda: spending_analysis_swticher(value),  # Show Top Spending Category
-        "9": lambda: data_visualization_switch(
-            value
-        ),  # Visualize Monthly Spending Trend
+        "9": lambda: data_visualization_switch(df),  # Visualize Monthly Spending Trend
         "10": lambda: csv_switch(df),  # Save Transactions to CSV
     }
     switcher.get(
