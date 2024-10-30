@@ -1,6 +1,6 @@
 from functions.csv_functions.switcher import csv_switch
 from functions.data_management.switcher import data_management_switch
-from functions.data_vizualization.switcher import data_vizualization_switch
+from functions.data_visualization.switcher import data_visualization_switch
 from functions.spending_analysis.switcher import spending_analysis_swticher
 
 
@@ -16,7 +16,7 @@ def switch(value, df):
             value
         ),  # Calculate Average Monthly Spending
         "8": lambda: spending_analysis_swticher(value),  # Show Top Spending Category
-        "9": lambda: data_vizualization_switch(
+        "9": lambda: data_visualization_switch(
             value
         ),  # Visualize Monthly Spending Trend
         "10": lambda: csv_switch(df),  # Save Transactions to CSV
