@@ -43,25 +43,27 @@ To set up the project, follow one of the methods below:
   python main.py
 ```
 
-### Project Structure
+## Project Structure
 **How its set up**:
 
     personal-finance-tracker/
-    │
-    ├── src/                    # Source code directory
-    │   ├── main.py                 # Main script to run the app
-    │   ├── data_management.py      # Manages transactions (loading, adding, editing, deleting)
-    │   ├── budget_management.py    # Manages income, budget settings, and alerts
-    │   ├── data_analysis.py        # Analyzes spending and identifies trends
-    │   ├── visualization.py        # Generates line, bar, and pie charts
-    │
-    ├── requirements.txt        # List of dependencies
-    ├── sampledata.csv          # Sample data for initial testing
-    ├── .gitignore              # Excludes unnecessary files/folders (e.g., venv/)
-    └── README.md               # Project documentation
+    ├── src/                         # Source code directory
+    │   ├── main.py                  # Main script to run the app
+    │   ├── functions/               # Directory for function modules
+    │   │   ├── csv_functions/       # Functions for handling CSV operations
+    │   │   ├── data_management/      # Functions for managing data
+    │   │   ├── data_visualization/   # Functions for visualizing data
+    │   │   ├── spending_analysis/    # Functions for spending analysis
+    │   │   ├── common.py             # Common utilities for the app
+    │   │   └── switcher.py          # Switcher functionality for the app
+    ├── requirements.txt              # List of dependencies
+    ├── .gitignore                   # Excludes unnecessary files/folders (e.g., pycache, venv/)
+    └── README.md                    # Project documentation
 
 
-### Contributing
+
+
+## Contributing
 **To contribute to this project**:
   1. Fork the repository:
 
@@ -71,7 +73,7 @@ To set up the project, follow one of the methods below:
 
 
 
-### License
+## License
 
 **No License**:
   Go crazy do whatever you want. :D
