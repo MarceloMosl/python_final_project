@@ -55,17 +55,19 @@ def add_transaction(transactions: pd.DataFrame):
 
     description_inputted = input("Enter description: ")
 
-    amount_inputted = input("Enter the amount: ")
-
-    while not (amount_inputted.isnumeric()):
-        print("Only able to enter numbers")
-        amount_inputted = input("Enter the amount: ")
+    while True:
+        amount_inputted = input("Enter the amount:")
+        try:
+            amount_inputted = float(amount_inputted)
+            break
+        except ValueError:
+            print("Please enter only numbers")
 
     type_inputted = input(
         "Select the type of the transaction: (Expense or Income): "
     ).lower()
 
-    while not (type_inputted == "expense" or type_inputted == "income"):
+    while type_inputted not in ["expense", "income"]:
         type_inputted = input(
             "Select the type of the transaction: (Expense or Income): "
         ).lower()
