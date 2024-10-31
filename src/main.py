@@ -1,5 +1,4 @@
 from idlelib.pyparse import trans
-
 from functions.switcher import switch
 from functions.csv_functions.import_csv import import_csv_file
 import pandas as pd
@@ -7,11 +6,10 @@ import datetime as dt
 
 
 def main():
-    programShouldRun = True
 
     df = pd.DataFrame()
 
-
+    programShouldRun = True
     while programShouldRun:
         print("\n\nPersonal Finance Tracker App")
         print("0.  Import a CSV file")
@@ -30,11 +28,6 @@ def main():
         # get user input
         userInput = input("Enter your choice: ")
 
-        if userInput == "0":
-            # Setting the dataframe
-            df = import_csv_file()
-            continue
-
         # check if the user wants to exit
         if userInput == "11":
             programShouldRun = False
@@ -42,7 +35,8 @@ def main():
             break
 
         # call the switch function to handle the menu option
-        switch(userInput, df)
+        df = switch(userInput, df)
+
 
 if __name__ == "__main__":
     main()
