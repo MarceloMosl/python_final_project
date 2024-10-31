@@ -1,32 +1,43 @@
 import pandas as pd
+import datetime as dt
+import re
 
 
 def correct_date_format(date_inputted): #to make sure the YYYY-MM-DD format is followed
     date_format = r"^\d{4}-\d{2}-\d{2}$"
 
-
 def view_all_transactions(transactions: pd.DataFrame):
-    if not transactions:
+    if transactions.empty:
         print("No transactions available")
         return
     print("\nAll Transactions:")
-    for i, transaction in enumerate(transactions):
+    for i, transaction in transactions.iterrows():
         print(f"{i}:, Date: {transaction["date"]}, Category: {transaction["category"]}, "
               f"Description: {transaction["description"]}, Amount: {transaction["amount"]}")
 
 
-def view_transactions_by_date():
-    global transactions
+def view_transactions_by_date(transactions: pd.DataFrame):
     start_date_input = input("Enter the start date (YYYY-MM-DD) :")
     end_date_input = input("Enter the end date (YYYY-MM-DD) :")
     if not (correct_date_format(start_date_input) and correct_date_format(end_date_input)):
         print("Enter date YYYY-MM-DD:")
         return
-    for i, transaction in enumerate(transactions):
-        print(f"{i}, {transaction}")
+    try:
+        start_date = pd.to_datetime(start_date_input)
+        end_date = pd.to_datetime(end_date_input)
+    except ValueError:
+        print("Invalid format (YYYY-MM-DD)")
 
-def add_transaction():
-    global transactions
+    filter_date = transactions[(transactions["date"] >= start_date) & (transactions["date"] <= end_date)]
+
+    if filter_date.empty:
+        print("No transactions found")
+    else:
+        print("\nTransactions found:")
+        view_all_transactions(filter_date)
+
+
+def add_transaction(transactions: pd.DataFrame):
     while True:
         date_inputted = input("Enter the date (YYYY-MM-DD):")
         if not correct_date_format(date_inputted):
@@ -57,8 +68,7 @@ def add_transaction():
     print("Transaction added succesfully!")
 
 
-def edit_transaction():
-    global transactions
+def edit_transaction(transactions: pd.DataFrame):
     if not transactions:
         print("No transaction available to edit")
         return
@@ -98,8 +108,7 @@ def edit_transaction():
         print("Invalid Index")
 
 
-def remove_transaction():
-    global transactions
+def remove_transaction(transactions: pd.DataFrame):
     if not transactions:
         print("There no transactions to delete")
         return
