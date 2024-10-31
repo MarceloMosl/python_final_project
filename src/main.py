@@ -1,12 +1,16 @@
+from idlelib.pyparse import trans
+
 from functions.switcher import switch
 from functions.csv_functions.import_csv import import_csv_file
 import pandas as pd
+import datetime as dt
 
 
 def main():
     programShouldRun = True
 
     df = pd.DataFrame()
+
 
     while programShouldRun:
         print("\n\nPersonal Finance Tracker App")
@@ -39,7 +43,6 @@ def main():
 
         # call the switch function to handle the menu option
         switch(userInput, df)
-
 
 if __name__ == "__main__":
     main()
