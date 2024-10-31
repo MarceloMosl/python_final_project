@@ -55,8 +55,6 @@ def add_transaction(transactions: pd.DataFrame):
 
     description_inputted = input("Enter description: ")
 
-    amount_inputted = input("Enter the amount: ")
-
     while True:
         amount_inputted = input("Enter the amount:")
         try:
@@ -69,7 +67,7 @@ def add_transaction(transactions: pd.DataFrame):
         "Select the type of the transaction: (Expense or Income): "
     ).lower()
 
-    while type_inputted not in["expense", "income"]:
+    while type_inputted not in ["expense", "income"]:
         type_inputted = input(
             "Select the type of the transaction: (Expense or Income): "
         ).lower()
