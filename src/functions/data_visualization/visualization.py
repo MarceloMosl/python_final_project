@@ -1,39 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
-
-# Function to check if the input is a DataFrame and not empty
-def check_is_dataframe(transactions):
-    if not isinstance(transactions, pd.DataFrame):
-        print(
-            "Error: transactions is not a DataFrame. Please import the CSV file first."
-        )
-        return False
-
-    # Check if the DataFrame is empty
-    if transactions.empty:
-        print(
-            "Error: transactions DataFrame is empty. Please ensure the CSV file has data."
-        )
-        return False
-
-    # For debugging purposes, to confirm the content of the DataFrame
-    print("DataFrame is valid:")
-    print(transactions)
-    return True
-
-
-# Function to check if the DataFrame has necessary columns
-def check_required_columns(transactions, required_columns):
-    missing_columns = [
-        col for col in required_columns if col not in transactions.columns
-    ]
-    if missing_columns:
-        print(
-            f"Error: DataFrame missing required columns: {', '.join(missing_columns)}."
-        )
-        return False
-    return True
+from functions.common import check_is_dataframe, check_required_columns
 
 
 # Visualize Spending Trend (Line Chart)
@@ -119,5 +86,6 @@ def visualize_percentage_distribution(transactions):
     category_spending.plot(
         kind="pie", autopct="%1.1f%%", title="Percentage Distribution of Spending"
     )
-    plt.ylabel("")  # Hides the y-label in the pie chart for a cleaner look
+    # Hides the y-label in the pie chart for a cleaner look
+    plt.ylabel("")
     plt.show()
